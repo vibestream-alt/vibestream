@@ -34,6 +34,22 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
+        .site-logo {
+            display: block;
+            width: 180px;
+            max-width: 100%;
+            margin: 0 auto 20px;
+        }
+
+        .logo-link {
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        .logo-link:hover .site-logo {
+            opacity: 0.9;
+        }
+
         header h1 {
             font-size: 48px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -323,6 +339,9 @@
 <body>
     <div class="container">
         <header>
+            <a href="index.html" class="logo-link" aria-label="Till Vibestream startsida">
+                <img src="logo.svg" alt="Vibestream logo" class="site-logo">
+            </a>
             <h1>🎬 VIBESTREAM</h1>
             <p>Din live streaming plattform - Starta eller titta på livestreams från äkta creators</p>
         </header>
