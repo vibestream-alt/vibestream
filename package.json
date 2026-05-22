@@ -1,0 +1,13 @@
+{
+  "name": "vibestream",
+  "version": "1.0.0",
+  "description": "Live Streaming Platform",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Build completed successfully'",
+    "test": "echo 'No tests configured'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.0"
+  }
+}
