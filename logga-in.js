@@ -34,7 +34,7 @@ function updateAuthUI() {
         loginButton.textContent = 'Logga ut';
         loginButton.classList.remove('login-button');
         loginButton.classList.add('logout-button');
-        userWelcome.textContent = `Inloggad som ${user.displayName || user.email}`;
+        userWelcome.textContent = `Inloggad som ${user.username || user.displayName || user.email}`;
     } else {
         loginButton.textContent = 'Logga in';
         loginButton.classList.remove('logout-button');
@@ -79,56 +79,55 @@ function showTab(tabName) {
 
 function handleSignin(event) {
     event.preventDefault();
-    const email = document.getElementById('signinEmail').value.trim().toLowerCase();
+    const username = document.getElementById('signinUsername').value.trim().toLowerCase();
     const password = document.getElementById('signinPassword').value;
     const message = document.getElementById('signinMessage');
     const account = getStoredAccount();
 
-    if (!email || !password) {
-        message.textContent = 'Fyll i både e-post och lösenord.';
+    if (!username || !password) {
+        message.textContent = 'Fyll i bÃ¥de anvÃ¤ndarnamn och lÃ¶senord.';
         return;
     }
 
-    if (!account || account.email !== email) {
-        message.textContent = 'Inget konto hittades med den här e-posten. Skapa ett konto först.';
+    if (!account || (account.username ? account.username !== username : account.email !== username)) {
+        message.textContent = 'Inget konto hittades med det hÃ¤r anvÃ¤ndarnamnet. Skapa ett konto fÃ¶rst.';
         return;
     }
 
     if (account.password !== password) {
-        message.textContent = 'Fel lösenord. Försök igen.';
+        message.textContent = 'Fel lÃ¶senord. FÃ¶rsÃ¶k igen.';
         return;
     }
 
     setLoggedInUser(account);
     updateAuthUI();
     closeLoginModal();
-    alert('Du är inloggad som ' + account.displayName + '.');
+    alert('Du Ã¤r inloggad som ' + (account.username || account.displayName || account.email) + '.');
 }
 
 function handleSignup(event) {
     event.preventDefault();
-    const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+    const username = document.getElementById('signupUsername').value.trim().toLowerCase();
     const password = document.getElementById('signupPassword').value;
-    const displayName = document.getElementById('signupName').value.trim();
     const message = document.getElementById('signupMessage');
     const existingAccount = getStoredAccount();
 
-    if (!email || !password || !displayName) {
-        message.textContent = 'Fyll i alla fält för att skapa ett konto.';
+    if (!username || !password) {
+        message.textContent = 'Fyll i alla fÃ¤lt fÃ¶r att skapa ett konto.';
         return;
     }
 
-    if (existingAccount && existingAccount.email === email) {
-        message.textContent = 'Ett konto med den här e-posten finns redan. Logga in istället.';
+    if (existingAccount && ((existingAccount.username && existingAccount.username === username) || (existingAccount.email && existingAccount.email === username))) {
+        message.textContent = 'Ett konto med det hÃ¤r anvÃ¤ndarnamnet finns redan. Logga in istÃ¤llet.';
         return;
     }
 
-    const account = { email, password, displayName };
+    const account = { username, password };
     saveAccount(account);
     setLoggedInUser(account);
     updateAuthUI();
     closeLoginModal();
-    alert('Ditt konto är skapat och du är inloggad som ' + displayName + '.');
+    alert('Ditt konto Ã¤r skapat och du Ã¤r inloggad som ' + username + '.');
 }
 
 function initializeAuth() {

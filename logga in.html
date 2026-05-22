@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibestream - Logga in</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #2d3748;
+        }
+
+        .card {
+            width: min(500px, 100%);
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.18);
+            padding: 32px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        p.subtitle {
+            margin-bottom: 24px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 1px solid #e2e8f0;
+            background: #f7fafc;
+            color: #2d3748;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .auth-tab.active {
+            background: #667eea;
+            color: #fff;
+            border-color: #667eea;
+        }
+
+        .auth-form {
+            display: none;
+            gap: 16px;
+        }
+
+        .auth-form.active {
+            display: grid;
+        }
+
+        label {
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 14px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        .submit-button,
+        .back-button {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .submit-button {
+            background: #667eea;
+            color: white;
+            margin-top: 8px;
+        }
+
+        .back-button {
+            background: #edf2f7;
+            color: #2d3748;
+            margin-top: 12px;
+        }
+
+        .form-message {
+            min-height: 18px;
+            color: #e53e3e;
+            font-size: 14px;
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 18px;
+            left: 32px;
+            right: 32px;
+            text-align: center;
+            color: #718096;
+            font-size: 13px;
+        }
+
+        @media (max-width: 520px) {
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <a class="nav-link" href="index.html">? Till startsidan</a>
+        <h1>Logga in på Vibestream</h1>
+        <p class="subtitle">Använd ditt konto för att logga in, eller skapa ett nytt konto på samma sida.</p>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="signinTab">Logga in</button>
+            <button class="auth-tab" id="signupTab">Skapa konto</button>
+        </div>
+
+        <form id="signinForm" class="auth-form active">
+            <label for="signinUsername">Användarnamn</label>
+            <input id="signinUsername" type="text" placeholder="Ditt användarnamn" required>
+            <label for="signinPassword">Lösenord</label>
+            <input id="signinPassword" type="password" placeholder="Ditt lösenord" required>
+            <button type="submit" class="submit-button">Logga in</button>
+            <p class="form-message" id="signinMessage"></p>
+        </form>
+
+        <form id="signupForm" class="auth-form">
+            <label for="signupUsername">Användarnamn</label>
+            <input id="signupUsername" type="text" placeholder="Välj ett användarnamn" required>
+            <label for="signupPassword">Lösenord</label>
+            <input id="signupPassword" type="password" placeholder="Välj ett lösenord" required>
+            <button type="submit" class="submit-button">Skapa konto</button>
+            <p class="form-message" id="signupMessage"></p>
+        </form>
+
+        <button class="back-button" onclick="window.location.href='index.html'">Till startsidan</button>
+        <div class="footer-text">Kontot sparas i din webbläsare och loggar dig in lokalt på den här sidan.</div>
+    </div>
+
+    <script src="logga-in.js"></script>
+</body>
+</html>
