@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibestream - Skapa konto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #2d3748;
+        }
+
+        .card {
+            width: min(520px, 100%);
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.18);
+            padding: 34px;
+            position: relative;
+        }
+
+        .logo-link {
+            display: block;
+            margin: 0 auto 22px;
+            width: fit-content;
+        }
+
+        .site-logo {
+            width: 170px;
+            max-width: 100%;
+            display: block;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            margin-bottom: 24px;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 14px;
+            font-size: 15px;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        .submit-button,
+        .back-button {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .submit-button {
+            background: #667eea;
+            color: white;
+            margin-top: 8px;
+        }
+
+        .back-button {
+            background: #edf2f7;
+            color: #2d3748;
+            margin-top: 12px;
+        }
+
+        .form-message {
+            min-height: 18px;
+            color: #e53e3e;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .footer-text {
+            margin-top: 18px;
+            text-align: center;
+            color: #718096;
+            font-size: 13px;
+        }
+
+        @media (max-width: 520px) {
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <a href="index.html" class="logo-link" aria-label="Till Vibestream startsida">
+            <img src="logo.svg" alt="Vibestream logo" class="site-logo">
+        </a>
+        <h1>Skapa konto</h1>
+        <p class="subtitle">Ange din e-post, välj ett användarnamn och välj ett säkert lösenord för att skapa ditt konto.</p>
+        <form id="signupForm" class="auth-form active">
+            <label for="signupEmail">E-post</label>
+            <input id="signupEmail" type="email" placeholder="Din e-post" required>
+            <label for="signupUsername">Användarnamn</label>
+            <input id="signupUsername" type="text" placeholder="Välj ett användarnamn" required>
+            <label for="signupPassword">Lösenord</label>
+            <input id="signupPassword" type="password" placeholder="Välj ett lösenord" required>
+            <button type="submit" class="submit-button">Skapa konto</button>
+            <p class="form-message" id="signupMessage"></p>
+        </form>
+        <button class="back-button" onclick="window.location.href='index.html'">Till startsidan</button>
+        <div class="footer-text">När kontot är skapat kan du logga in med ditt användarnamn och lösenord.</div>
+    </div>
+
+    <script src="logga-in.js"></script>
+</body>
+</html>

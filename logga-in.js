@@ -107,22 +107,23 @@ function handleSignin(event) {
 
 function handleSignup(event) {
     event.preventDefault();
+    const email = document.getElementById('signupEmail').value.trim().toLowerCase();
     const username = document.getElementById('signupUsername').value.trim().toLowerCase();
     const password = document.getElementById('signupPassword').value;
     const message = document.getElementById('signupMessage');
     const existingAccount = getStoredAccount();
 
-    if (!username || !password) {
+    if (!email || !username || !password) {
         message.textContent = 'Fyll i alla fält för att skapa ett konto.';
         return;
     }
 
-    if (existingAccount && ((existingAccount.username && existingAccount.username === username) || (existingAccount.email && existingAccount.email === username))) {
-        message.textContent = 'Ett konto med det här användarnamnet finns redan. Logga in istället.';
+    if (existingAccount && ((existingAccount.username && existingAccount.username === username) || (existingAccount.email && existingAccount.email === email))) {
+        message.textContent = 'Ett konto med den här e-posten eller användarnamnet finns redan. Logga in istället.';
         return;
     }
 
-    const account = { username, password };
+    const account = { email, username, password };
     saveAccount(account);
     setLoggedInUser(account);
     updateAuthUI();
