@@ -31,6 +31,22 @@
             position: relative;
         }
 
+        .site-logo {
+            display: block;
+            width: 160px;
+            max-width: 100%;
+            margin: 0 auto 20px;
+        }
+
+        .logo-link {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .logo-link:hover .site-logo {
+            opacity: 0.9;
+        }
+
         h1 {
             font-size: 32px;
             margin-bottom: 10px;
@@ -152,34 +168,37 @@
 <body>
     <div class="card">
         <a class="nav-link" href="index.html">? Till startsidan</a>
-        <h1>Logga in på Vibestream</h1>
-        <p class="subtitle">Använd ditt konto för att logga in, eller skapa ett nytt konto på samma sida.</p>
+        <h1>Logga in pï¿½ Vibestream</h1>
+        <p class="subtitle">Anvï¿½nd ditt konto fï¿½r att logga in, eller skapa ett nytt konto pï¿½ samma sida.</p>
 
+        <a href="index.html" class="logo-link" aria-label="Till Vibestream startsida">
+            <img src="logo.svg" alt="Vibestream logo" class="site-logo">
+        </a>
         <div class="auth-tabs">
             <button class="auth-tab active" id="signinTab">Logga in</button>
             <button class="auth-tab" id="signupTab">Skapa konto</button>
         </div>
 
         <form id="signinForm" class="auth-form active">
-            <label for="signinUsername">Användarnamn</label>
-            <input id="signinUsername" type="text" placeholder="Ditt användarnamn" required>
-            <label for="signinPassword">Lösenord</label>
-            <input id="signinPassword" type="password" placeholder="Ditt lösenord" required>
+            <label for="signinUsername">Anvï¿½ndarnamn</label>
+            <input id="signinUsername" type="text" placeholder="Ditt anvï¿½ndarnamn" required>
+            <label for="signinPassword">Lï¿½senord</label>
+            <input id="signinPassword" type="password" placeholder="Ditt lï¿½senord" required>
             <button type="submit" class="submit-button">Logga in</button>
             <p class="form-message" id="signinMessage"></p>
         </form>
 
         <form id="signupForm" class="auth-form">
-            <label for="signupUsername">Användarnamn</label>
-            <input id="signupUsername" type="text" placeholder="Välj ett användarnamn" required>
-            <label for="signupPassword">Lösenord</label>
-            <input id="signupPassword" type="password" placeholder="Välj ett lösenord" required>
+            <label for="signupUsername">Anvï¿½ndarnamn</label>
+            <input id="signupUsername" type="text" placeholder="Vï¿½lj ett anvï¿½ndarnamn" required>
+            <label for="signupPassword">Lï¿½senord</label>
+            <input id="signupPassword" type="password" placeholder="Vï¿½lj ett lï¿½senord" required>
             <button type="submit" class="submit-button">Skapa konto</button>
             <p class="form-message" id="signupMessage"></p>
         </form>
 
         <button class="back-button" onclick="window.location.href='index.html'">Till startsidan</button>
-        <div class="footer-text">Kontot sparas i din webbläsare och loggar dig in lokalt på den här sidan.</div>
+        <div class="footer-text">Kontot sparas i din webblï¿½sare och loggar dig in lokalt pï¿½ den hï¿½r sidan.</div>
     </div>
 
     <script src="logga-in.js"></script>
