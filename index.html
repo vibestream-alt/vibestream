@@ -48,6 +48,139 @@
             font-weight: 300;
         }
 
+        .user-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .login-button,
+        .logout-button {
+            background: #5a67d8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .login-button:hover,
+        .logout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .user-welcome {
+            color: #4a5568;
+            font-size: 15px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            width: min(500px, 100%);
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            color: #4a5568;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid #e2e8f0;
+            background: #f7fafc;
+            color: #2d3748;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .auth-tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .auth-form {
+            display: none;
+            gap: 16px;
+        }
+
+        .auth-form.active {
+            display: grid;
+        }
+
+        .auth-form label {
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e0;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .submit-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 14px 18px;
+            border-radius: 999px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .form-message {
+            margin-top: 10px;
+            color: #e53e3e;
+            font-size: 14px;
+            min-height: 18px;
+        }
+
+        .success-message {
+            color: #2f855a;
+        }
+
         .streams-section {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
@@ -192,6 +325,10 @@
             <h1>🎬 VIBESTREAM</h1>
             <p>Din live streaming plattform - Starta eller titta på livestreams från äkta creators</p>
         </header>
+        <div class="user-actions">
+            <button class="login-button" id="loginButton">Logga in</button>
+            <span class="user-welcome" id="userWelcome"></span>
+        </div>
 
         <div class="streams-section">
             <h2>📡 Aktiva livestreams</h2>
@@ -244,5 +381,35 @@
         document.addEventListener('DOMContentLoaded', renderStreams);
         setInterval(renderStreams, 5000);
     </script>
+
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <button class="close-button" id="closeLoginModal">✕</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="signinTab">Logga in</button>
+                <button class="auth-tab" id="signupTab">Skapa konto</button>
+            </div>
+            <form id="signinForm" class="auth-form active">
+                <label for="signinEmail">E-post</label>
+                <input id="signinEmail" type="email" placeholder="Din e-post" required>
+                <label for="signinPassword">Lösenord</label>
+                <input id="signinPassword" type="password" placeholder="Ditt lösenord" required>
+                <button type="submit" class="submit-button">Logga in</button>
+                <p class="form-message" id="signinMessage"></p>
+            </form>
+            <form id="signupForm" class="auth-form">
+                <label for="signupEmail">E-post</label>
+                <input id="signupEmail" type="email" placeholder="Din e-post" required>
+                <label for="signupPassword">Lösenord</label>
+                <input id="signupPassword" type="password" placeholder="Välj ett lösenord" required>
+                <label for="signupName">Visningsnamn</label>
+                <input id="signupName" type="text" placeholder="Ditt namn" required>
+                <button type="submit" class="submit-button">Skapa konto</button>
+                <p class="form-message" id="signupMessage"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="logga-in.js"></script>
 </body>
 </html>
